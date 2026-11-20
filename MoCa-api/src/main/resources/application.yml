@@ -1,0 +1,63 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: moca-api
+  profiles:
+    active: dev # 기본 활성화 프로필
+    group:
+      dev:
+        - dev
+      prod:
+        - prod
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        default_batch_fetch_size: 100
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  sql:
+    init:
+      mode: never
+
+  # LLM 설정 (MoCa-agent 연동용)
+  ai:
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          options:
+            model: ${GEMINI_MODEL}
+            temperature: 0.7
+
+jwt:
+  access-token:
+    secret: ${JWT_ACCESS_TOKEN_SECRET}
+    exp: ${JWT_ACCESS_TOKEN_EXP}
+  refresh-token:
+    secret: ${JWT_REFRESH_TOKEN_SECRET}
+    exp: ${JWT_REFRESH_TOKEN_EXP}
+    cookie:
+      secure: ${JWT_REFRESH_COOKIE_SECURE}
+      same-site: ${JWT_REFRESH_COOKIE_SAME_SITE}
+
+app:
+  jwt:
+    registry: ${APP_JWT_REGISTRY}
+    max-active-count: ${APP_JWT_MAX_ACTIVE_COUNT}
+
+server:
+  port: 8080
+  forward-headers-strategy: framework

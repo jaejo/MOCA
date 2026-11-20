@@ -1,0 +1,13 @@
+dependencies {
+    // LLM 스키마 설명용 어노테이션(@JsonPropertyDescription 등)
+    api 'com.fasterxml.jackson.core:jackson-annotations'
+
+    // 도메인 엔티티(@Entity 등) 및 JPA 사용
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // ErrorCode, ErrorResponse에서 HttpStatus 사용
+    api 'org.springframework:spring-web'
+
+    // Request DTO 유효성 검증 어노테이션(@NotBlank, @Email, @Size 등)
+    api 'jakarta.validation:jakarta.validation-api'
+}

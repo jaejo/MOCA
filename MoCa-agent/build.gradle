@@ -1,0 +1,19 @@
+ext {
+    set('springAiVersion', "1.0.0-M6")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
+}
+
+dependencies {
+    api project(':MoCa-core')
+
+    // DB 드라이버 (PostgreSQL)
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // 사용하는 LLM 스타터 주석 해제 후 사용 (OpenAI, Vertex AI Gemini 등)
+    // implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+}

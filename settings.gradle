@@ -1,0 +1,5 @@
+rootProject.name = 'MoCa'
+
+include 'MoCa-core'
+include 'MoCa-agent'
+include 'MoCa-api'

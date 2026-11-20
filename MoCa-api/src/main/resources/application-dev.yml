@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  refresh-token:
+    cookie:
+      secure: ${JWT_REFRESH_COOKIE_SECURE}
+      same-site: ${JWT_REFRESH_COOKIE_SAME_SITE}
